@@ -1,0 +1,58 @@
+{
+  "businessDate": "2026-10-24",
+  "showtimes": [
+    {
+      "id": "SOH1-1001",
+      "filmId": "FILM-1",
+      "schedule": { "startsAt": "2026-10-24T13:00:00+01:00" },
+      "attributeIds": [],
+      "requires3dGlasses": false
+    },
+    {
+      "id": "SOH1-1002",
+      "filmId": "FILM-1",
+      "schedule": { "startsAt": "2026-10-24T16:00:00+01:00" },
+      "attributeIds": ["A-CAPT"],
+      "requires3dGlasses": true
+    },
+    {
+      "id": "SOH1-1003",
+      "filmId": "FILM-2",
+      "schedule": { "startsAt": "2026-10-24T18:30:00+01:00" },
+      "attributeIds": ["A-DOC", "A-QA"],
+      "requires3dGlasses": false
+    },
+    {
+      "id": "SOH1-1004",
+      "filmId": "FILM-3",
+      "schedule": { "startsAt": "2026-10-24T10:30:00+01:00" },
+      "attributeIds": ["A-BABY", "A-CLUB"],
+      "requires3dGlasses": false
+    },
+    {
+      "id": "SOH1-1005",
+      "filmId": "FILM-4",
+      "schedule": { "startsAt": "2026-10-25T00:15:00+01:00" },
+      "attributeIds": [],
+      "requires3dGlasses": false
+    }
+  ],
+  "relatedData": {
+    "films": [
+      { "id": "FILM-1", "title": { "text": "The Example Film" } },
+      { "id": "FILM-2", "title": { "text": "DocHouse: A Made Up Documentary (2025)" } },
+      { "id": "FILM-3", "title": { "text": "Film Club: Pretend Classic" } },
+      { "id": "FILM-4", "title": { "text": "UKJFF - Imaginary Picture" } }
+    ],
+    "attributes": [
+      { "id": "A-CAPT", "shortName": { "text": "Captioned" }, "name": { "text": "Open Captioned" } },
+      { "id": "A-DOC", "shortName": { "text": "Dochouse" }, "name": { "text": "Programmed by Example Dochouse" } },
+      { "id": "A-QA", "shortName": { "text": "Q&A" }, "name": { "text": "Screening followed by a Q&A" } },
+      { "id": "A-BABY", "shortName": { "text": "Baby Club" }, "name": { "text": "Baby Club" } },
+      { "id": "A-CLUB", "shortName": { "text": "Film Club" }, "name": { "text": "Film Club" } }
+    ],
+    "sites": [
+      { "id": "SOH1", "name": { "text": "Soho" } }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+# Change Log
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+## [1.0.0] - 2026-10-22
+
+### Added
+- `CurzonUk::Cinema.all` and `CurzonUk::Cinema.new(id)` for Curzon's cinemas, from the Vista API behind curzon.com.
+- `CurzonUk::Performance.at(id, from:, to:)` with booking links, subtitles, variants, film years and festivals, following cinebase 5.4.
+- `CurzonUk.token` and `CurzonUk.acquire_token!`, with platform gems that bundle curl-impersonate 2.2.3.
+- Hand-written fixtures, a live shape test that checks real responses without storing them, and GitHub Actions CI and release workflows.

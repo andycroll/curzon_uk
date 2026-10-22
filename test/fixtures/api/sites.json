@@ -1,0 +1,40 @@
+{
+  "sites": [
+    {
+      "id": "CAN2",
+      "name": { "text": "Canterbury" },
+      "contactDetails": {
+        "addressV2": {
+          "line1": { "text": "Unit 9," },
+          "line2": { "text": "The Example Riverside," },
+          "line3": { "text": "Canterbury, CT1 0ZZ" },
+          "line4": null
+        }
+      }
+    },
+    {
+      "id": "SOH1",
+      "name": { "text": "Soho" },
+      "contactDetails": {
+        "addressV2": {
+          "line1": { "text": "99 Example Avenue," },
+          "line2": { "text": "London," },
+          "line3": { "text": "W1D 0ZZ" },
+          "line4": null
+        }
+      }
+    },
+    {
+      "id": "VIC1",
+      "name": { "text": "Victoria" },
+      "contactDetails": {
+        "addressV2": {
+          "line1": { "text": "58 Example Street," },
+          "line2": { "text": "London," },
+          "line3": { "text": "SW1E 0ZZ " },
+          "line4": null
+        }
+      }
+    }
+  ]
+}
