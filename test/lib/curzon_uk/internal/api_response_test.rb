@@ -44,6 +44,14 @@ class CurzonUk::Internal::ApiResponseTest < Minitest::Test
     assert_raises(CurzonUk::AuthenticationError) { api.sites }
   end
 
+  def test_rejected_token_is_cleared
+    stub_request(:get, "#{BASE_URL}/sites").to_return(status: 401)
+
+    assert_raises(CurzonUk::AuthenticationError) { api.sites }
+
+    assert_nil CurzonUk.token
+  end
+
   private
 
   def api
