@@ -84,6 +84,12 @@ cinema.brand
 cinema.full_name
 #=> 'Curzon Soho'
 
+cinema.latitude
+#=> 51.5127983093262
+
+cinema.longitude
+#=> -0.130500003695488
+
 cinema.url
 #=> 'https://www.curzon.com/venues/soho/'
 ```

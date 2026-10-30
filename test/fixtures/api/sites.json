@@ -3,6 +3,7 @@
     {
       "id": "CAN2",
       "name": { "text": "Canterbury" },
+      "location": { "latitude": 0, "longitude": 0 },
       "contactDetails": {
         "addressV2": {
           "line1": { "text": "Unit 9," },
@@ -15,6 +16,7 @@
     {
       "id": "SOH1",
       "name": { "text": "Soho" },
+      "location": { "latitude": 51.5127983093262, "longitude": -0.130500003695488 },
       "contactDetails": {
         "addressV2": {
           "line1": { "text": "99 Example Avenue," },

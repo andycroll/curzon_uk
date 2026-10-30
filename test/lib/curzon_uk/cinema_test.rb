@@ -58,6 +58,29 @@ class CurzonUk::CinemaTest < Minitest::Test
     end
   end
 
+  def test_latitude_and_longitude
+    with_fake_api do
+      cinema = CurzonUk::Cinema.new('SOH1')
+
+      assert_in_delta 51.5128, cinema.latitude, 0.0001
+      assert_in_delta(-0.1305, cinema.longitude, 0.0001)
+    end
+  end
+
+  def test_latitude_and_longitude_are_nil_without_a_location
+    with_fake_api do
+      assert_nil CurzonUk::Cinema.new('VIC1').latitude
+      assert_nil CurzonUk::Cinema.new('VIC1').longitude
+    end
+  end
+
+  def test_latitude_and_longitude_are_nil_at_zero_zero
+    with_fake_api do
+      assert_nil CurzonUk::Cinema.new('CAN2').latitude
+      assert_nil CurzonUk::Cinema.new('CAN2').longitude
+    end
+  end
+
   def test_name
     with_fake_api do
       assert_equal 'Soho', CurzonUk::Cinema.new('SOH1').name
