@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.0] - 2026-10-31
+
+### Added
+- `Cinema#latitude` and `Cinema#longitude` as Floats in decimal degrees, from the Vista sites response. They are `nil` when a site has no location or sits at 0, 0.
+- `CurzonUk.ensure_token!` fetches a guest token only when there is none or it expires within an hour, and `CurzonUk.token_expires_at` reads its expiry. Both come from cinebase's `Vista::TokenHolder`.
+
+### Changed
+- A token the API rejects is cleared from `CurzonUk.token`, so the next `ensure_token!` fetches a fresh one.
+- Requires cinebase 5.6.
+
 ## [1.0.0] - 2026-10-22
 
 ### Added

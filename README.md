@@ -53,9 +53,21 @@ CurzonUk.token = ENV.fetch('CURZON_TOKEN')
 ```
 
 Tokens currently last 12 hours. The gem checks the declared expiry but does not
-verify the signature. Missing, expired or rejected tokens raise
-`CurzonUk::AuthenticationError`; call `CurzonUk.acquire_token!` again. Normal
-API calls never acquire or renew a token automatically.
+verify the signature. Normal API calls never acquire or renew a token
+automatically. `CurzonUk.ensure_token!` fetches one only when there is no token,
+or the token expires within an hour, and otherwise keeps the current one. Call
+it before each batch of requests:
+
+``` ruby
+CurzonUk.ensure_token!
+CurzonUk.token_expires_at
+#=> 2026-10-31 03:00:00 UTC
+CurzonUk::Cinema.all
+```
+
+Missing, expired or rejected tokens raise `CurzonUk::AuthenticationError`. A
+token the API rejects is cleared from `CurzonUk.token`, so the next
+`ensure_token!` fetches a fresh one.
 
 ### Cinema
 
@@ -83,6 +95,12 @@ cinema.brand
 
 cinema.full_name
 #=> 'Curzon Soho'
+
+cinema.latitude
+#=> 51.5127983093262
+
+cinema.longitude
+#=> -0.130500003695488
 
 cinema.url
 #=> 'https://www.curzon.com/venues/soho/'

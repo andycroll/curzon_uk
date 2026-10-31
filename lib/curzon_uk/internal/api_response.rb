@@ -12,23 +12,31 @@ module CurzonUk
 
       # @return [Array<Hash>] cinemas
       def sites
-        client.get("sites").fetch("sites")
+        get("sites").fetch("sites")
       end
 
       # @param [String] cinema_id site id, e.g. 'ALD1'
       # @param [Date] date business date
       # @return [Hash] showtimes plus their related films and attributes
       def showtimes(cinema_id, date)
-        client.get("showtimes/by-business-date/#{date.iso8601}",
+        get("showtimes/by-business-date/#{date.iso8601}",
                    "siteIds" => cinema_id)
       end
 
       private
 
+      def get(path, query = {})
+        token = CurzonUk.token
+        client(token).get(path, query)
+      rescue Cinebase::Vista::AuthenticationError
+        CurzonUk.reject_token!(token)
+        raise
+      end
+
       # Curzon's API needs no Connect-Region-Code.
-      def client
+      def client(token)
         Cinebase::Vista::Client.new(base_url: BASE_URL, region_code: nil,
-                                    token: CurzonUk.token)
+                                    token: token)
       end
     end
   end

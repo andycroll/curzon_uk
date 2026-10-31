@@ -68,6 +68,24 @@ module CurzonUk
       'Curzon'.freeze
     end
 
+    # Latitude of the cinema
+    # @return [Float, nil] decimal degrees, or nil when unknown
+    # @example
+    #   CurzonUk::Cinema.new('SOH1').latitude
+    #   #=> 51.5127983093262
+    def latitude
+      coordinates&.first
+    end
+
+    # Longitude of the cinema
+    # @return [Float, nil] decimal degrees, or nil when unknown
+    # @example
+    #   CurzonUk::Cinema.new('SOH1').longitude
+    #   #=> -0.130500003695488
+    def longitude
+      coordinates&.last
+    end
+
     # The name of the cinema
     # @return [String]
     # @example
@@ -100,6 +118,13 @@ module CurzonUk
         text = address.dig(key, 'text').to_s.strip.delete_suffix(',').strip
         text unless text.empty?
       end
+    end
+
+    # 0, 0 marks a site whose position was never set
+    def coordinates
+      location = site_hash['location'] || {}
+      pair = [location['latitude'], location['longitude']]
+      pair.map(&:to_f) if pair.all?(Numeric) && pair.any?(&:nonzero?)
     end
 
     def site_hash
