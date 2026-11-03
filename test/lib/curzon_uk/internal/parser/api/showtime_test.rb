@@ -39,7 +39,7 @@ class CurzonUk::Internal::Parser::Api::ShowtimeTest < Minitest::Test
   def test_festival
     showtime = parse(film_id: 'HO2')
 
-    assert_equal Cinebase::Festival.new(name: 'UKJFF', year: 2026), showtime[:festival]
+    assert_equal Cinebase::Festival.new(name: 'UK Jewish Film Festival', year: 2026), showtime[:festival]
     assert_equal 'Example Gala', showtime[:film_name]
   end
 
