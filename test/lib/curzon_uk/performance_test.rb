@@ -35,6 +35,19 @@ class CurzonUk::PerformanceTest < Minitest::Test
     assert_equal 'https://www.curzon.com/ticketing/seats/?showtimeId=SOH1-1001', performance.booking_url
   end
 
+  def test_at_reads_audience_from_title
+    @api_response.define_singleton_method(:showtimes) do |cinema_id, date|
+      super(cinema_id, date).tap do |data|
+        data.dig('relatedData', 'films', 0, 'title')['text'] = 'Kids Club: Wonka'
+      end
+    end
+    performance = performances_at('SOH1').first
+
+    assert_equal 'Kids Club: Wonka', performance.title
+    assert_equal 'Wonka', performance.film_name
+    assert_equal %w(kids), performance.variant
+  end
+
   def test_at_parses_3d_open_captions
     performance = performances_at('SOH1')[1]
 
