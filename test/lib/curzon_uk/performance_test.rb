@@ -74,7 +74,7 @@ class CurzonUk::PerformanceTest < Minitest::Test
     performance = performances_at('SOH1')[4]
 
     assert_equal 'Imaginary Picture', performance.film_name
-    assert_equal Cinebase::Festival.new(name: 'UKJFF', year: 2026), performance.festival
+    assert_equal Cinebase::Festival.new(name: 'UK Jewish Film Festival', year: 2026), performance.festival
   end
 
   def test_at_keeps_after_midnight_on_next_utc_day
